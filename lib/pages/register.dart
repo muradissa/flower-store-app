@@ -105,7 +105,7 @@ class Register extends StatelessWidget {
                           )
                         ],
                       ),
-
+                      
                     ],
                   ),
                 ),
