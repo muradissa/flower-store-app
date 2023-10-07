@@ -1,3 +1,4 @@
+import 'package:flower_store_app/shared/colors.dart';
 import 'package:flower_store_app/shared/email_textfield.dart';
 import 'package:flower_store_app/shared/primary_textfield.dart';
 import 'package:flutter/material.dart';
@@ -8,53 +9,89 @@ class Login extends StatelessWidget {
   const Login ({super.key});
   @override
   Widget build(BuildContext context){
-    return Scaffold(
-      
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              children: [
+    return SafeArea(
+      child:
+        Scaffold(
+            backgroundColor: Color.fromARGB(255, 250, 250, 250),
+            body: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
 
-                const SizedBox(
-                  height: 100,
-                ),
+                    const SizedBox(
+                      height: 10,
+                    ),
 
-                PrimaryTextField(
-                    textType: TextInputType.emailAddress,
-                    holderPlace: "Enter Your Email",
-                    isPassword: false
-                ),
+                    PrimaryTextField(
+                        textType: TextInputType.emailAddress,
+                        holderPlace: "Enter Your Email",
+                        isPassword: false
+                    ),
 
-                const SizedBox(
-                  height: 40,
-                ),
+                    const SizedBox(
+                      height: 30,
+                    ),
 
-                // textType holderPlace isPassword
-                PrimaryTextField(
-                    textType: TextInputType.text,
-                    holderPlace: "Enter Your Password",
-                    isPassword: true
-                ),
+                    // textType holderPlace isPassword
+                    PrimaryTextField(
+                        textType: TextInputType.text,
+                        holderPlace: "Enter Your Password",
+                        isPassword: true
+                    ),
 
-                const SizedBox(
-                  height: 40,
-                ),
+                    const SizedBox(
+                      height: 30,
+                    ),
 
-                ElevatedButton(
-                  child: Text("Login"),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.blueAccent,
-                    elevation: 3,
-                  ),
-                  onPressed: () {},
+                    // ElevatedButton(
+                    //   child: Text("Login"),
+                    //   style: ElevatedButton.styleFrom(
+                    //     primary: Colors.blueAccent,
+                    //     elevation: 3,
+                    //   ),
+                    //   onPressed: () {},
+                    // ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Text("Sign in",style: TextStyle(fontSize: 16),),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(btnBlue),
+                        padding: MaterialStateProperty.all(EdgeInsets.all(12)),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)))
+                      )
+                    ),
+
+                    const SizedBox(
+                      height: 30,
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Do not have an account?",style: TextStyle(fontSize: 16),),
+                        TextButton(
+                            onPressed: (){},
+                            child: Text(
+                              'Sign up',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 17
+
+                              ),
+                            ),
+                        )
+                      ],
+                    ),
+
+                  ],
                 ),
-              ],
-            ),
-          ),
+              ),
+
+            )
 
         )
-            
     );
   }
 }
