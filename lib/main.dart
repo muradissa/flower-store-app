@@ -1,4 +1,5 @@
 import 'package:flower_store_app/pages/login.dart';
+import 'package:flower_store_app/pages/register.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const Login(),
+      home: const Register(),
     );
   }
 }

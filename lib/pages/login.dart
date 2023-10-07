@@ -1,3 +1,4 @@
+import 'package:flower_store_app/pages/register.dart';
 import 'package:flower_store_app/shared/colors.dart';
 import 'package:flower_store_app/shared/email_textfield.dart';
 import 'package:flower_store_app/shared/primary_textfield.dart';
@@ -72,7 +73,9 @@ class Login extends StatelessWidget {
                       children: [
                         Text("Do not have an account?",style: TextStyle(fontSize: 16),),
                         TextButton(
-                            onPressed: (){},
+                          onPressed: (){
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Register()));
+                          },
                             child: Text(
                               'Sign up',
                               style: TextStyle(
