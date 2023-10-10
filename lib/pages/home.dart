@@ -2,16 +2,16 @@ import 'package:flower_store_app/shared/colors.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-final List<Map> products = List.generate(8, (index) => {
-      "id": index,
-      "name": "Flower $index",
-      "price": (Random().nextInt(80)+20)
-    }).toList();
+import '../model/product.dart';
 
 class Home extends StatelessWidget{
 
-  const Home({Key?key}) : super(key: key);
-
+ const Home({Key?key}) : super(key: key);
+ //    final List<Map> products = List.generate(8, (index) => {
+ //      "id": index,
+ //      "name": "Flower $index",
+ //      "price": (Random().nextInt(80)+20)
+ //    }).toList();
 
     @override
     Widget build(BuildContext context){
@@ -148,11 +148,11 @@ class Home extends StatelessWidget{
                           footer: GridTileBar(
                             backgroundColor: Colors.black54,
                             title: Text(
-                              products[index]['name'],
+                              products[index].name,
                               style: const TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             ),
-                            subtitle: Text("\$${products[index]['price'].toString()}"),
+                            subtitle: Text("\$${products[index].price.toString()}"),
                             trailing: const Icon(Icons.shopping_cart),
                           ),
 
@@ -165,7 +165,7 @@ class Home extends StatelessWidget{
                                       top: 10,
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(30),
-                                        child: Image.asset("assets/img/flower"+index.toString()+".png"),
+                                        child: Image.asset(products[index].imgPath),
 
                                     )
                                   ),
