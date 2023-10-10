@@ -1,5 +1,7 @@
 import 'package:flower_store_app/pages/home.dart';
 import 'package:flower_store_app/pages/login.dart';
+import 'package:flower_store_app/pages/product_details.dart';
+import 'package:flower_store_app/pages/product_details2.dart';
 import 'package:flower_store_app/pages/register.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:  Home(),
+      home:  ProductDetails(),
     );
   }
 }
