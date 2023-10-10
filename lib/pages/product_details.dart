@@ -1,3 +1,4 @@
+import 'package:flower_store_app/model/product.dart';
 import 'package:flower_store_app/shared/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -5,8 +6,11 @@ import 'package:flutter/material.dart';
 
 class ProductDetails extends StatefulWidget {
 
+  final Product product ;
+  const ProductDetails({super.key, required this.product});
+
   @override
-  State<ProductDetails> createState() => _ProductDetailsState();
+  State<ProductDetails> createState() => _ProductDetailsState( );
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
@@ -55,10 +59,10 @@ class _ProductDetailsState extends State<ProductDetails> {
         padding: const EdgeInsets.all(10.0),
         child: SingleChildScrollView(
           child: Column(children: [
-            Image.asset("assets/img/flower0.png"),
+            Image.asset(widget.product.imgPath),
             Row(children: [
               Text(
-                "Flowers 1" ,
+                widget.product.name,
                 style: TextStyle(
                     fontSize: 22 ,
                     color: Color.fromARGB(255, 15, 14, 68)
@@ -72,7 +76,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 child: Container(
                   padding: EdgeInsets.all(7),
                   child: Text(
-                    "\$ 213" ,
+                    "\$ "+widget.product.price.toString() ,
                     style: TextStyle(
                         fontSize: 20 ,
                         color: Color.fromARGB(255, 15, 14, 68),

@@ -1,3 +1,4 @@
+import 'package:flower_store_app/pages/product_details.dart';
 import 'package:flower_store_app/shared/colors.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -171,7 +172,11 @@ class Home extends StatelessWidget{
                                   ),
                                 ],)
                         ),
-                        onTap: (){},
+                        onTap: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder : (context)=>  ProductDetails(product :products[index])) );
+                        },
                       ),
                     );
                   }
