@@ -1,6 +1,8 @@
 import 'package:flower_store_app/model/product.dart';
+import 'package:flower_store_app/provider/products_cart.dart';
 import 'package:flower_store_app/shared/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
 
@@ -33,8 +35,11 @@ class _ProductDetailsState extends State<ProductDetails> {
                         icon: Icon(Icons.add_shopping_cart)
                     ),
                     Container(
-                      child:Text("20" ,style: TextStyle(color: Colors.black,),),
-                      padding: EdgeInsets.all(3),
+                      child: Consumer<ProductsCart>(
+                        builder: ((context,instance,child){
+                        return Text("${instance.productsCart.length}",style: TextStyle(color: Colors.black,),);
+                      })),
+                      padding: EdgeInsets.all(5),
                       decoration: BoxDecoration(
                         color: Color.fromARGB(255, 40, 180, 241 ),
                         shape: BoxShape.circle,
@@ -159,13 +164,41 @@ class _ProductDetailsState extends State<ProductDetails> {
           ],),
         ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          // Add your onPressed code here!
-        },
-        label: const Text('Add to Cart'),
-        icon: const Icon(Icons.shopping_cart),
-      ),
+        // bottomNavigationBar: Consumer<ProductsCart>(
+        //   builder: (context, instance, child) {
+        //     return Stack(
+        //       children: [
+        //          // The main content
+        //         Positioned(
+        //           bottom: 16.0, // Adjust the distance from the bottom as needed
+        //           right: 16.0, // Adjust the distance from the right as needed
+        //           child: ElevatedButton(
+        //             onPressed: () {
+        //               instance.productsCart.add(widget.product);
+        //               // Add your onPressed code here!
+        //             },
+        //             child: Text('Add to Cart'),
+        //           ),
+        //         ),
+        //       ],
+        //     );
+        //   },
+        //   child: Container(), // The main content
+        // ),
+      floatingActionButton: Consumer<ProductsCart>(
+          builder: ((context,instance,child){
+            return   FloatingActionButton.extended(
+              onPressed: () {
+                instance.productsCart.add(widget.product);
+                // Add your onPressed code here!
+              },
+              label: const Text('Add to Cart'),
+              icon:   Icon(Icons.shopping_cart) ,
+
+
+            );
+          })),
+
     );
   }
 }

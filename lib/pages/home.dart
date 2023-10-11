@@ -1,6 +1,8 @@
 import 'package:flower_store_app/pages/product_details.dart';
+import 'package:flower_store_app/provider/products_cart.dart';
 import 'package:flower_store_app/shared/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'dart:math';
 
 import '../model/product.dart';
@@ -63,8 +65,11 @@ class Home extends StatelessWidget{
                             icon: Icon(Icons.add_shopping_cart)
                         ),
                         Container(
-                          child:Text("20" ,style: TextStyle(color: Colors.black,),),
-                          padding: EdgeInsets.all(3),
+                          child: Consumer<ProductsCart>(
+                            builder: ((context,instance,child){
+                              return Text("${instance.productsCart.length}" ,style: TextStyle(color: Colors.black,),);
+                            })),
+                          padding: EdgeInsets.all(5),
                           decoration: BoxDecoration(
                             color: Color.fromARGB(255, 40, 180, 241 ),
                             shape: BoxShape.circle,
@@ -154,7 +159,16 @@ class Home extends StatelessWidget{
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             ),
                             subtitle: Text("\$${products[index].price.toString()}"),
-                            trailing: const Icon(Icons.shopping_cart),
+                            trailing: Consumer<ProductsCart>(
+                              builder: ((context,instenest,child){
+                                return IconButton(
+                                    icon: Icon(Icons.shopping_cart),
+                                  onPressed: (){
+                                    instenest.addNewProduct(products[index]);
+                                  },
+                                );
+                              })
+                              ,) ,
                           ),
 
                               child: Stack(
