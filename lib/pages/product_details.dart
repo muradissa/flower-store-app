@@ -26,36 +26,34 @@ class _ProductDetailsState extends State<ProductDetails> {
           title: Text("Product Details"),
           backgroundColor: appBarBlue,
           actions :[
-            Row(
-              children: [
-                Stack(
-                  children: [
-                    IconButton(
-                        onPressed: (){},
-                        icon: Icon(Icons.add_shopping_cart)
-                    ),
-                    Container(
-                      child: Consumer<ProductsCart>(
-                        builder: ((context,instance,child){
-                        return Text("${instance.productsCart.length}",style: TextStyle(color: Colors.black,),);
-                      })),
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 40, 180, 241 ),
-                        shape: BoxShape.circle,
+            Consumer<ProductsCart>(
+              builder: ((context,instance,child){
+                return Row(
+                    children: [
+                      Stack(
+                        children: [
+                          IconButton(
+                              onPressed: (){},
+                              icon: Icon(Icons.add_shopping_cart)
+                          ),
+                          Container(
+                            child: Text("${instance.productsCart.length}",style: TextStyle(color: Colors.black,),),
+                            padding: EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 40, 180, 241 ),
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 15.0),
-                  child:
-                  Text(
-                      "\$ 202",
-                      style: TextStyle(fontSize: 18)
-                  ),
-                )
-              ],
+                      Padding(
+                        padding: const EdgeInsets.only(right: 15.0),
+                        child:
+                       Text("\$ ${instance.total}",style: TextStyle(color: Colors.white,fontSize: 18),)
+                      )
+                    ],
+                );
+               }),
             )
           ]
       ),
